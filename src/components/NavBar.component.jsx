@@ -2,7 +2,7 @@ import logo from "../assets/Aptos_Primary_WHT (1).svg";
 
 const NavBar = () => {
   return (
-    <nav className="flex justify-between m-8 text-white text-xl">
+    <nav className="flex justify-between m-8 text-white text-xl ">
       <img src={logo} alt="logo" className="w-24" />
       <ul className=" flex text-3xl">
         <li className="mx-4">Build</li>

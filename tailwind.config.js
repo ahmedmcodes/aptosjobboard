@@ -6,6 +6,9 @@ export default {
       colors: {
         "Aptos-black": "#121919",
       },
+      backgroundImage: {
+        "main-bg": "url('./bg-image.png')",
+      },
     },
   },
   plugins: [],
