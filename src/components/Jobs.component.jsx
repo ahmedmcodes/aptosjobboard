@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import logo from "../assets/aptos-logo.svg";
+import { Link, Outlet } from "react-router-dom";
 
 const Jobs = () => {
-  const [state, setState] = useState([]);
+  const [openJobs, setOpenJobs] = useState([]);
 
   useEffect(() => {
     fetch(
@@ -12,15 +13,21 @@ const Jobs = () => {
         return response.json();
       })
       .then((data) => {
-        setState(data.jobs);
+        setOpenJobs(data.jobs);
       });
   }, []);
-  console.log(state);
+  console.log(openJobs);
+
+  // if (openJobs[0] === undefined) {
+  //   return (
+  //     <div className="flex justify-center items-center h-screen">loading</div>
+  //   );
+  // }
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      {state &&
-        state.map((item) => (
+    <>
+      <div className="flex flex-col items-center justify-center">
+        {openJobs.map((item) => (
           <div className="bg-red-500 m-4 flex flex-row p-4" key={item.id}>
             <div>
               <img src={logo} alt="logo" className="w-6" />
@@ -30,10 +37,14 @@ const Jobs = () => {
               <p>Aptos Labs</p>
               <p>{item.location.name}</p>
             </div>
-            <div>Read More</div>
+            <Link to={`${item.internal_job_id}`}>
+              <div>Read More</div>
+            </Link>
           </div>
         ))}
-    </div>
+      </div>
+      <Outlet />
+    </>
   );
 };
 
