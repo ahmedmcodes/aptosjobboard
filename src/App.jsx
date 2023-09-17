@@ -8,13 +8,20 @@ import {
 } from "react-router-dom";
 import Jobs from "./components/Jobs.component";
 import { Test } from "./components/test.component";
+import NotFound from "./components/NotFound.component";
+import ErrorElement from "./ErrorElement/ErrorElement.component";
 
 const router2 = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<NavBar />}>
       <Route index element={<Home />} />
       <Route path="jobs" element={<Jobs />} />
-      <Route path="jobs/:id" element={<Test />} />
+      <Route
+        path="jobs/:id"
+        element={<Test />}
+        errorElement={<ErrorElement />}
+      />
+      <Route path="*" element={<NotFound />} />
     </Route>
   )
 );

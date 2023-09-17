@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import parse from "html-react-parser";
+
 export const Test = () => {
   let { id } = useParams();
   const [jobs, setJobs] = useState([]);
@@ -19,6 +21,7 @@ export const Test = () => {
   const filteredJob = jobs.filter((item) => {
     return item.internal_job_id == id;
   });
+
   console.log(filteredJob);
 
   if (filteredJob[0] === undefined) {
@@ -28,7 +31,9 @@ export const Test = () => {
 
   return (
     <div className="text-white text-3xl">
-      <div dangerouslySetInnerHTML={{ __html: filteredJob[0].content }} />
+      <div
+        dangerouslySetInnerHTML={{ __html: parse(filteredJob[0].content) }}
+      />
     </div>
   );
 };
