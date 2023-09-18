@@ -18,22 +18,24 @@ export const Test = () => {
       });
   }, []);
   console.log(jobs);
+
   const filteredJob = jobs.filter((item) => {
     return item.internal_job_id == id;
   });
 
-  console.log(filteredJob);
+  // if (filteredJob[0] === undefined) {
+  //   return <div>loading</div>;
+  // }
 
-  if (filteredJob[0] === undefined) {
-    return <div>loading</div>;
-  }
   console.log(filteredJob);
 
   return (
-    <div className="text-white text-3xl">
-      <div
-        dangerouslySetInnerHTML={{ __html: parse(filteredJob[0].content) }}
-      />
-    </div>
+    filteredJob[0] && (
+      <div className="text-white text-3xl">
+        <div
+          dangerouslySetInnerHTML={{ __html: parse(filteredJob[1].content) }}
+        />
+      </div>
+    )
   );
 };

@@ -15,7 +15,7 @@ const router2 = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<NavBar />}>
       <Route index element={<Home />} />
-      <Route path="jobs" element={<Jobs />} />
+      <Route path="jobs" element={<Jobs />} errorElement={<ErrorElement />} />
       <Route
         path="jobs/:id"
         element={<Test />}
