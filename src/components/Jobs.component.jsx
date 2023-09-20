@@ -18,11 +18,11 @@ const Jobs = () => {
   }, []);
   console.log(openJobs);
 
-  // if (openJobs[0] === undefined) {
-  //   return (
-  //     <div className="flex justify-center items-center h-screen">loading</div>
-  //   );
-  // }
+  if (openJobs[0] === undefined) {
+    return (
+      <div className="flex justify-center items-center h-screen">loading</div>
+    );
+  }
 
   return (
     <>
@@ -37,7 +37,7 @@ const Jobs = () => {
               <p>Aptos Labs</p>
               <p>{item.location.name}</p>
             </div>
-            <Link to={`${item.internal_job_id}`}>
+            <Link to={`${item.id}`}>
               <div>Read More</div>
             </Link>
           </div>

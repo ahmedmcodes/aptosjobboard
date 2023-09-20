@@ -1,41 +1,36 @@
-import { useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import parse from "html-react-parser";
+import "./JobDescription.styles.css";
 
 export const Test = () => {
-  let { id } = useParams();
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setJobs] = useState({});
 
-  useEffect(() => {
-    fetch(
-      "https://boards-api.greenhouse.io/v1/boards/aptoslabs/jobs?content=true"
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setJobs(data.jobs);
-      });
-  }, []);
   console.log(jobs);
 
-  const filteredJob = jobs.filter((item) => {
-    return item.internal_job_id == id;
-  });
-
-  // if (filteredJob[0] === undefined) {
-  //   return <div>loading</div>;
-  // }
-
-  console.log(filteredJob);
+  const data = useLoaderData();
+  console.log(data);
 
   return (
-    filteredJob[0] && (
-      <div className="text-white text-3xl">
-        <div
-          dangerouslySetInnerHTML={{ __html: parse(filteredJob[1].content) }}
-        />
-      </div>
-    )
+    <div className="text-white text-xl mx-44 ">
+      <h1>{data.title}</h1>
+      <div
+        dangerouslySetInnerHTML={{ __html: parse(data.content) }}
+        className="text-justify"
+      />
+    </div>
   );
+};
+
+export const careerLoader = async ({ params }) => {
+  let { id } = params;
+
+  const data = await fetch(
+    `https://boards-api.greenhouse.io/v1/boards/aptoslabs/jobs/${id}?content=true`
+  );
+
+  if (data.status === 404) {
+    throw new Response("Not Found");
+  }
+  return data.json();
 };

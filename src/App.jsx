@@ -7,7 +7,7 @@ import {
   Route,
 } from "react-router-dom";
 import Jobs from "./components/Jobs.component";
-import { Test } from "./components/test.component";
+import { Test, careerLoader } from "./components/test.component";
 import NotFound from "./components/NotFound.component";
 import ErrorElement from "./ErrorElement/ErrorElement.component";
 
@@ -18,6 +18,7 @@ const router2 = createBrowserRouter(
       <Route path="jobs" element={<Jobs />} errorElement={<ErrorElement />} />
       <Route
         path="jobs/:id"
+        loader={careerLoader}
         element={<Test />}
         errorElement={<ErrorElement />}
       />
