@@ -1,24 +1,27 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useLocation, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import parse from "html-react-parser";
 import "./JobDescription.styles.css";
+import BreadCrumbs from "./BreadCrumbs.coponent";
 
 export const Test = () => {
   const [jobs, setJobs] = useState({});
-
-  console.log(jobs);
-
+  let location = useLocation();
+  location = location.pathname;
   const data = useLoaderData();
   console.log(data);
 
   return (
-    <div className="text-white text-xl mx-44 ">
-      <h1>{data.title}</h1>
-      <div
-        dangerouslySetInnerHTML={{ __html: parse(data.content) }}
-        className="text-justify"
-      />
-    </div>
+    <>
+      <BreadCrumbs location={location} />
+      <div className="text-white text-xl mx-44 ">
+        <h1>{data.title}</h1>
+        <div
+          dangerouslySetInnerHTML={{ __html: parse(data.content) }}
+          className="text-justify"
+        />
+      </div>
+    </>
   );
 };
 

@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import logo from "../assets/aptos-logo.svg";
 import { Link, Outlet } from "react-router-dom";
+import { VscLoading } from "react-icons/vsc";
+import BreadCrumbs from "./BreadCrumbs.coponent";
+import { useLocation } from "react-router-dom";
 
 const Jobs = () => {
   const [openJobs, setOpenJobs] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     fetch(
@@ -20,7 +24,9 @@ const Jobs = () => {
 
   if (openJobs[0] === undefined) {
     return (
-      <div className="flex justify-center items-center h-screen">loading</div>
+      <div className="flex justify-center items-center h-screen text-2xl ">
+        <VscLoading className="animate-spin text-5xl font-extrabold mr-2" />
+      </div>
     );
   }
 
