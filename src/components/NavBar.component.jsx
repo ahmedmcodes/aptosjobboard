@@ -5,24 +5,24 @@ const NavBar = () => {
   return (
     <>
       <header>
-        <nav className="flex justify-between m-8 text-white text-xl border-b border-[#06F7F7] ">
+        <nav className="flex justify-between py-3 px-6 border-b border-white  text-white text-xl  ">
           <NavLink to="/" className="flex flex-row">
             <img src={logo} alt="logo" className="w-24" />
             <p className="ml-2 mt-1 text-md">Board</p>
           </NavLink>
-          <ul className=" flex text-2xl">
-            <li className="mx-4">Build</li>
-            <li className="mx-4">Connect</li>
+          <ul className=" flex text-xl items-center  ">
+            <li className="mx-6 hover:text-[#06F7F7] ">Build</li>
+            <li className="mx-6 hover:text-[#06F7F7]">Connect</li>
             <NavLink to="jobs">
-              <li className="mx-4">Explore</li>
+              <li className="mx-6 hover:text-[#06F7F7]">Explore</li>
             </NavLink>
           </ul>
-          <div className=" border px-6 py-1.5 mb-1 hover:text-[#06F7F7] hover:border-[#06F7F7] hover:cursor-pointer">
+          <div className="text-md border px-4 py-1 mb-1 hover:text-[#06F7F7] hover:border-[#06F7F7] hover:cursor-pointer">
             Post a Job
           </div>
         </nav>
       </header>
-      <main>
+      <main className="bg-[url('https://aptosfoundation.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fbg-texture.e06eb05a.webp&w=1920&q=100')]">
         <Outlet />
       </main>
     </>

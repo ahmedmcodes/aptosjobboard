@@ -7,7 +7,8 @@ import { useLocation } from "react-router-dom";
 
 const Jobs = () => {
   const [openJobs, setOpenJobs] = useState([]);
-  const location = useLocation();
+  let location = useLocation();
+  location = location.pathname;
 
   useEffect(() => {
     fetch(
@@ -25,16 +26,17 @@ const Jobs = () => {
   if (openJobs[0] === undefined) {
     return (
       <div className="flex justify-center items-center h-screen text-2xl ">
-        <VscLoading className="animate-spin text-5xl font-extrabold mr-2" />
+        <VscLoading className="animate-spin-faster text-5xl font-extrabold mr-2" />
       </div>
     );
   }
 
   return (
-    <>
+    <div clas>
+      <BreadCrumbs location={location} />
       <div className="flex flex-col items-center justify-center">
         {openJobs.map((item) => (
-          <div className="bg-red-500 m-4 flex flex-row p-4" key={item.id}>
+          <div className=" m-4 flex flex-row p-4" key={item.id}>
             <div>
               <img src={logo} alt="logo" className="w-6" />
             </div>
@@ -49,8 +51,7 @@ const Jobs = () => {
           </div>
         ))}
       </div>
-      <Outlet />
-    </>
+    </div>
   );
 };
 

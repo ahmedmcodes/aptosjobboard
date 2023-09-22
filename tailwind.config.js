@@ -9,6 +9,9 @@ export default {
       backgroundImage: {
         "main-bg": "url('./bg-image.png')",
       },
+      animation: {
+        "spin-faster": "spin 0.55s linear infinite",
+      },
     },
   },
   plugins: [],
