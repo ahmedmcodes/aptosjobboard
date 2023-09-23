@@ -1,9 +1,10 @@
-import { useLoaderData, useLocation, useParams } from "react-router-dom";
+import { Link, useLoaderData, useLocation, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import parse from "html-react-parser";
 import "./JobDescription.styles.css";
 import BreadCrumbs from "./BreadCrumbs.coponent";
 import { VscLoading } from "react-icons/vsc";
+import { HiArrowUpRight } from "react-icons/hi2";
 
 export const Test = () => {
   let location = useLocation();
@@ -34,9 +35,21 @@ export const Test = () => {
     isVisible && (
       <div>
         <BreadCrumbs location={location} />
-        <div className="text-white text-xl mx-44 ">
-          <h1>{data.title}</h1>
-          <p>Location: {data.location.name}</p>
+        <div className="text-white text-xl mx-44 p-4 ">
+          <div className="flex flex-row justify-between ">
+            <div>
+              <h1 className="text-2xl">{data.title}</h1>
+              <p className="text-sm">Location: {data.location.name}</p>
+            </div>
+            <div>
+              <button className="text-sm border px-4 py-1 hover:text-[#06F7F7] hover:border-[#06F7F7] hover:cursor-pointer flex flex-row items-center">
+                <a href={data.absolute_url} target="_blank">
+                  Apply Now
+                </a>
+                <HiArrowUpRight className="ml-2 text-xs" />
+              </button>
+            </div>
+          </div>
           <div
             dangerouslySetInnerHTML={{ __html: parse(data.content) }}
             className="text-justify my-4"

@@ -6,13 +6,13 @@ const BreadCrumbs = ({ location }) => {
   pathSegments[0] = "home";
 
   return (
-    <ul className="flex flex-row mx-44 ">
+    <ul className="flex flex-row mx-44 my-2 text-xl p-4 ">
       {pathSegments.map((item, index) => {
         return (
           <Link
             key={index}
             to={paths[index]}
-            className="last:after:content-[''] after:content-['>'] after:mx-2 capitalize"
+            className="last:after:content-[''] after:content-['>'] after:mx-2 capitalize hover:text-[#06F7F7]"
           >
             {item}
           </Link>
