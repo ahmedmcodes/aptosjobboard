@@ -6,7 +6,7 @@ import BreadCrumbs from "./BreadCrumbs.coponent";
 import { VscLoading } from "react-icons/vsc";
 import { HiArrowUpRight } from "react-icons/hi2";
 
-export const Test = () => {
+export const JobDescription = () => {
   let location = useLocation();
   location = location.pathname;
   const data = useLoaderData();
@@ -33,9 +33,9 @@ export const Test = () => {
 
   return (
     isVisible && (
-      <div>
+      <div className="mt-2 mb-4">
         <BreadCrumbs location={location} />
-        <div className="text-white text-xl mx-44 p-4 ">
+        <div className="text-white text-xl mx-44 p-10 bg-[#08555C] rounded-lg ">
           <div className="flex flex-row justify-between ">
             <div>
               <h1 className="text-2xl">{data.title}</h1>

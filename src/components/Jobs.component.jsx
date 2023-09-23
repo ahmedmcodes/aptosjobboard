@@ -37,26 +37,40 @@ const Jobs = () => {
   }
 
   return (
-    <div>
+    <div className="bg-Aptos-black">
       <BreadCrumbs location={location} />
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col mx-44">
         {jobsToShow.map((item) => (
-          <div className=" m-4 flex flex-row p-4" key={item.id}>
-            <div>
+          <div
+            className=" m-4  flex flex-row bg-[#08555C] p-6 rounded-lg"
+            key={item.id}
+          >
+            <div className="self-center">
               <img src={logo} alt="logo" className="w-6" />
             </div>
             <div className="mx-4">
-              <h3>{item.title}</h3>
-              <p>Aptos Labs</p>
-              <p>{item.location.name}</p>
+              <h3 className="text-lg">{item.title}</h3>
+              <a href="https://aptoslabs.com" target="_blank">
+                Aptos Labs
+              </a>
+              <p className="text-sm">{item.location.name}</p>
             </div>
-            <Link to={`${item.id}`}>
-              <div>Read More</div>
-            </Link>
+            <div className="self-center ml-auto ">
+              <Link to={`${item.id}`} className="hover:text-[#06F7F7]">
+                Read More
+              </Link>
+            </div>
           </div>
         ))}
+        {jobsToShow.length === openJobs.length ? null : (
+          <button
+            className="my-4 border px-8 py-3 bg-white  border-white text-black hover:bg-[#06F7F7]  hover:cursor-pointer w-fit m-auto font-bold"
+            onClick={loadJobs}
+          >
+            Load More
+          </button>
+        )}
       </div>
-      <button onClick={loadJobs}>Load More</button>
     </div>
   );
 };

@@ -8,7 +8,7 @@ const NavBar = () => {
         <nav className="flex justify-between py-4 px-6 border-b border-white  text-white text-xl  ">
           <NavLink to="/" className="flex flex-row">
             <img src={logo} alt="logo" className="w-24" />
-            <p className="ml-2 mt-1 text-md">Board</p>
+            <p className="ml-2 text-md">Board</p>
           </NavLink>
           <ul className=" flex text-xl items-center  ">
             <li className="mx-6 hover:text-[#06F7F7] ">Build</li>
@@ -22,7 +22,7 @@ const NavBar = () => {
           </div>
         </nav>
       </header>
-      <main className="bg-[url('https://aptosfoundation.org/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fbg-texture.e06eb05a.webp&w=1920&q=100')]">
+      <main className="bg-main">
         <Outlet />
       </main>
     </>
