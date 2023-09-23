@@ -12,6 +12,9 @@ export default {
       animation: {
         "spin-faster": "spin 0.55s linear infinite",
       },
+      fontFamily: {
+        nunito: ["Nunito"],
+      },
     },
   },
   plugins: [],

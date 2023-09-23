@@ -9,7 +9,7 @@ const Home = () => {
       </p>
       <Link
         to="/jobs"
-        className="border px-8 py-3 bg-white  border-white text-black hover:bg-[#06F7F7]  hover:cursor-pointer w-fit"
+        className="border px-8 py-3 bg-white  border-white text-black hover:bg-[#06F7F7]  hover:cursor-pointer w-fit font-bold"
       >
         Explore Jobs
       </Link>
