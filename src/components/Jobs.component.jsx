@@ -1,27 +1,19 @@
 import { useEffect, useState } from "react";
 import logo from "../assets/aptos-logo.svg";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLoaderData } from "react-router-dom";
 import { VscLoading } from "react-icons/vsc";
 import BreadCrumbs from "./BreadCrumbs.coponent";
 import { useLocation } from "react-router-dom";
 
-const Jobs = () => {
-  const [openJobs, setOpenJobs] = useState([]);
+export const Jobs = () => {
+  // const [openJobs, setOpenJobs] = useState([]);
   const [jobsToLoad, setJobsToLoad] = useState(9);
   let location = useLocation();
   location = location.pathname;
+  let fetchedData = useLoaderData();
+  console.log(fetchedData);
+  const openJobs = fetchedData.jobs;
 
-  useEffect(() => {
-    fetch(
-      "https://boards-api.greenhouse.io/v1/boards/aptoslabs/jobs?content=true"
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setOpenJobs(data.jobs);
-      });
-  }, []);
   console.log(openJobs);
 
   const jobsToShow = openJobs.slice(0, jobsToLoad);
@@ -50,7 +42,7 @@ const Jobs = () => {
             </div>
             <div className="mx-4">
               <h3 className="text-lg">{item.title}</h3>
-              <a href="https://aptoslabs.com" target="_blank">
+              <a href="https://aptoslabs.com" target="_blank" rel="noreferrer">
                 Aptos Labs
               </a>
               <p className="text-sm">{item.location.name}</p>
@@ -75,4 +67,10 @@ const Jobs = () => {
   );
 };
 
-export default Jobs;
+export const openJobsLoader = async () => {
+  const data = await fetch(
+    `https://boards-api.greenhouse.io/v1/boards/aptoslabs/jobs?content=true`
+  );
+
+  return data.json();
+};

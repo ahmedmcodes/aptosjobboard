@@ -23,7 +23,6 @@ export const JobDescription = () => {
   if (isVisible === false) {
     return (
       <div>
-        <BreadCrumbs location={location} />
         <div className="flex justify-center items-center h-screen text-2xl ">
           <VscLoading className="animate-spin-faster text-5xl font-extrabold mr-2" />
         </div>
@@ -35,11 +34,11 @@ export const JobDescription = () => {
     isVisible && (
       <div className="mt-2 mb-4">
         <BreadCrumbs location={location} />
-        <div className="text-white text-xl mx-44 p-10 bg-[#08555C] rounded-lg ">
+        <div className="text-white text-xl mx-44 p-10 bg-[#08555C] rounded-lg">
           <div className="flex flex-row justify-between ">
             <div>
               <h1 className="text-2xl">{data.title}</h1>
-              <p className="text-sm">Location: {data.location.name}</p>
+              <p className="text-sm">Location: {data.location.name} </p>
             </div>
             <div>
               <button className="text-sm border px-4 py-1 hover:text-[#06F7F7] hover:border-[#06F7F7] hover:cursor-pointer flex flex-row items-center">
@@ -67,8 +66,5 @@ export const careerLoader = async ({ params }) => {
     `https://boards-api.greenhouse.io/v1/boards/aptoslabs/jobs/${id}?content=true`
   );
 
-  if (data.status === 404) {
-    throw new Response("Not Found");
-  }
   return data.json();
 };

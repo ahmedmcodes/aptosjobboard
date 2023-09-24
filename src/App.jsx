@@ -6,7 +6,7 @@ import {
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
-import Jobs from "./components/Jobs.component";
+import { Jobs, openJobsLoader } from "./components/Jobs.component";
 import {
   JobDescription,
   careerLoader,
@@ -18,7 +18,12 @@ const router2 = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<NavBar />}>
       <Route index element={<Home />} />
-      <Route path="jobs" element={<Jobs />} errorElement={<ErrorElement />} />
+      <Route
+        path="jobs"
+        loader={openJobsLoader}
+        element={<Jobs />}
+        errorElement={<ErrorElement />}
+      />
       <Route
         path="jobs/:id"
         loader={careerLoader}
