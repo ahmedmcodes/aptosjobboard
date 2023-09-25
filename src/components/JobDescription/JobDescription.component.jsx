@@ -1,8 +1,8 @@
-import { Link, useLoaderData, useLocation, useParams } from "react-router-dom";
+import { useLoaderData, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import parse from "html-react-parser";
 import "./JobDescription.styles.css";
-import BreadCrumbs from "./BreadCrumbs.coponent";
+import BreadCrumbs from "../BreadCrumbs/BreadCrumbs.coponent";
 import { VscLoading } from "react-icons/vsc";
 import { HiArrowUpRight } from "react-icons/hi2";
 
@@ -10,7 +10,6 @@ export const JobDescription = () => {
   let location = useLocation();
   location = location.pathname;
   const data = useLoaderData();
-  console.log(data);
 
   const [isVisible, setIsVisible] = useState(false);
 
@@ -59,7 +58,7 @@ export const JobDescription = () => {
   );
 };
 
-export const careerLoader = async ({ params }) => {
+export const jobDescriptionLoader = async ({ params }) => {
   let { id } = params;
 
   const data = await fetch(

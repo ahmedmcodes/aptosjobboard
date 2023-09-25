@@ -1,5 +1,5 @@
 import { Outlet, NavLink } from "react-router-dom";
-import logo from "../assets/Aptos_Primary_WHT (1).svg";
+import logo from "../../assets/Aptos_Primary_WHT (1).svg";
 
 const NavBar = () => {
   return (

@@ -1,67 +1,37 @@
-import NavBar from "./components/NavBar.component";
-import Home from "./components/Home.component";
+import NavBar from "./components/NavBar/NavBar.component";
+import Home from "./components/Home/Home.component";
 import {
   createBrowserRouter,
   RouterProvider,
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
-import { Jobs, openJobsLoader } from "./components/Jobs.component";
+import { OpenJobs, openJobsLoader } from "./OpenJobs/OpenJobs.component";
 import {
   JobDescription,
-  careerLoader,
-} from "./components/JobDescription.component";
-import NotFound from "./components/NotFound.component";
-import ErrorElement from "./ErrorElement/ErrorElement.component";
+  jobDescriptionLoader,
+} from "./components/JobDescription/JobDescription.component";
+import ErrorElement from "./components/ErrorElement/ErrorElement.component";
 
-const router2 = createBrowserRouter(
+const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<NavBar />}>
+    <Route path="/" element={<NavBar />} errorElement={<ErrorElement />}>
       <Route index element={<Home />} />
-      <Route
-        path="jobs"
-        loader={openJobsLoader}
-        element={<Jobs />}
-        errorElement={<ErrorElement />}
-      />
+      <Route path="jobs" loader={openJobsLoader} element={<OpenJobs />} />
       <Route
         path="jobs/:id"
-        loader={careerLoader}
+        loader={jobDescriptionLoader}
         element={<JobDescription />}
-        errorElement={<ErrorElement />}
       />
       <Route path="*" element={<ErrorElement />} />
     </Route>
   )
 );
 
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <NavBar />,
-//     children: [
-//       {
-//         path: "/",
-//         element: <Home />,
-//       },
-//       {
-//         path: "jobs",
-//         element: <Jobs />,
-//         children: [
-//           {
-//             path: "/:id",
-//             element: <Test />,
-//           },
-//         ],
-//       },
-//     ],
-//   },
-// ]);
-
 const App = () => {
   return (
     <>
-      <RouterProvider router={router2} />
+      <RouterProvider router={router} />
     </>
   );
 };

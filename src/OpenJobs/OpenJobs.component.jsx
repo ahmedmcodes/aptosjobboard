@@ -1,20 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import logo from "../assets/aptos-logo.svg";
-import { Link, Outlet, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { VscLoading } from "react-icons/vsc";
-import BreadCrumbs from "./BreadCrumbs.coponent";
+import BreadCrumbs from "../components/BreadCrumbs/BreadCrumbs.coponent";
 import { useLocation } from "react-router-dom";
 
-export const Jobs = () => {
-  // const [openJobs, setOpenJobs] = useState([]);
+export const OpenJobs = () => {
   const [jobsToLoad, setJobsToLoad] = useState(9);
   let location = useLocation();
   location = location.pathname;
   let fetchedData = useLoaderData();
-  console.log(fetchedData);
   const openJobs = fetchedData.jobs;
-
-  console.log(openJobs);
 
   const jobsToShow = openJobs.slice(0, jobsToLoad);
   const loadJobs = () => {
