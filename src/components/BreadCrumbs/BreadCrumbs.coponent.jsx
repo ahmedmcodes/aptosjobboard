@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
-const paths = ["/", "/jobs"];
+const paths = ["/aptosjobboard/", "/aptosjobboard/jobs"];
 
 const BreadCrumbs = ({ location }) => {
   let pathSegments = location.split("/");
-  pathSegments[0] = "home";
-
+  const filteredSegements = pathSegments.filter((item) => item !== "");
+  console.log(pathSegments);
+  console.log(filteredSegements);
   return (
     <ul className="flex flex-row mx-44 my-2 text-xl p-4 ">
-      {pathSegments.map((item, index) => {
+      {filteredSegements.map((item, index) => {
         return (
           <Link
             key={index}

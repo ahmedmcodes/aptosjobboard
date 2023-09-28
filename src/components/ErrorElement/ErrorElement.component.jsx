@@ -7,7 +7,7 @@ const ErrorElement = () => {
     <div className=" bg-[#08555C] rounded-xl h-min m-44 p-8 w-1/2 ">
       <Link
         className="text-2xl flex flex-row items-center hover:text-[#06F7F7]"
-        to="/"
+        to="/aptosjobboard/"
       >
         <HiArrowNarrowLeft className="mr-2 text-lg" />
         Go to Homepage

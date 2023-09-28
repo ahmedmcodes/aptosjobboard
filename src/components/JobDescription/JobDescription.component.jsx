@@ -41,7 +41,7 @@ export const JobDescription = () => {
             </div>
             <div>
               <button className="text-sm border px-4 py-1 hover:text-[#06F7F7] hover:border-[#06F7F7] hover:cursor-pointer flex flex-row items-center">
-                <a href={data.absolute_url} target="_blank">
+                <a href={data.absolute_url} rel="noreferrer" target="_blank">
                   Apply Now
                 </a>
                 <HiArrowUpRight className="ml-2 text-xs" />

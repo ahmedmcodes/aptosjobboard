@@ -15,13 +15,23 @@ import ErrorElement from "./components/ErrorElement/ErrorElement.component";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<NavBar />} errorElement={<ErrorElement />}>
+    <Route
+      path="/aptosjobboard/"
+      element={<NavBar />}
+      errorElement={<ErrorElement />}
+    >
       <Route index element={<Home />} />
-      <Route path="jobs" loader={openJobsLoader} element={<OpenJobs />} />
+      <Route
+        path="jobs"
+        loader={openJobsLoader}
+        element={<OpenJobs />}
+        errorElement={<ErrorElement />}
+      />
       <Route
         path="jobs/:id"
         loader={jobDescriptionLoader}
         element={<JobDescription />}
+        errorElement={<ErrorElement />}
       />
       <Route path="*" element={<ErrorElement />} />
     </Route>

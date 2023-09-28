@@ -6,7 +6,7 @@ const NavBar = () => {
     <>
       <header>
         <nav className="flex justify-between py-4 px-6 border-b border-white  text-white text-xl  ">
-          <NavLink to="/" className="flex flex-row">
+          <NavLink to="/aptosjobboard/" className="flex flex-row">
             <img src={logo} alt="logo" className="w-24" />
             <p className="ml-2 text-md">Board</p>
           </NavLink>
